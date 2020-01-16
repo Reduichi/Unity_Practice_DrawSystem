@@ -17,21 +17,19 @@ public class Randomcard : MonoBehaviour
     private Image img;               // 圖片元件
     private Button btn;              // 按鈕元件
     private AudioSource aud;         // 音源元件
-    private GameObject panelCard;    // 隨機道具物件
+    private int index;               // 隨機道具編號
 
     private void Start()
     {
-        img = GetComponent<Image>();
-        btn = GetComponent<Button>();
-        panelCard = GameObject.Find("道具框框");
-
+        img = GameObject.Find("道具圖片").GetComponent<Image>();
+        btn = GameObject.Find("抽牌按鈕").GetComponent<Button>();
+        aud = GetComponent<AudioSource>();
         btn.onClick.AddListener(ChooseCard);
-        StartCoroutine(ScrollEffect());  // 啟動協程
     }
 
     private void ChooseCard()
     {
-        panelCard.SetActive(false);
+        StartCoroutine(ScrollEffect());  // 啟動協程
     }
 
     // 定義協程方法 捲動效果
